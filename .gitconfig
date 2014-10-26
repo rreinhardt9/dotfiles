@@ -1,0 +1,18 @@
+[color]
+	ui = true
+[user]
+	name = Ross Reinhardt
+	email = rreinhardt9@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+[push]
+	default = simple
+[diff]
+	tool = meld
+[merge]
+	tool = meld
