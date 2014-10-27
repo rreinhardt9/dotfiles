@@ -15,6 +15,8 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Keithbsmiley/rspec.vim'
+Plugin 'Railscasts-Theme-GUIand256color'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -31,15 +33,12 @@ set nocompatible
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
+set number " show line numbers
+set autoread " Auto-reload changed files
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -111,7 +110,7 @@ set tabstop=2 shiftwidth=2
 set expandtab
 
 set ignorecase
-set smartcase
+set smartcase " case-smart searching
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
