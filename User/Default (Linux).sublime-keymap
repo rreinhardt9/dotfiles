@@ -1,0 +1,4 @@
+[
+   { "keys": ["ctrl+shift+."], "command": "erb" },
+   { "keys": ["ctrl+shift+c"], "command": "color_pick" }
+]

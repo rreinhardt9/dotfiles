@@ -1,0 +1,4 @@
+{
+	"last_test_run": "ruby -Itest test/functional/gifts_controller_test.rb",
+	"last_test_working_dir": "/home/ross/dev/forafriend-mission"
+}
