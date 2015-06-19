@@ -16,3 +16,5 @@
 	tool = meld
 [merge]
 	tool = meld
+[core]
+	editor = /usr/bin/vim
