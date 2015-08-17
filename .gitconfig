@@ -18,3 +18,4 @@
 	tool = meld
 [core]
 	editor = /usr/bin/vim
+	excludesfile = ~/.cvsignore
