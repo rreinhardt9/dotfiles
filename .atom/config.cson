@@ -1,0 +1,35 @@
+"*":
+  editor:
+    invisibles: {}
+    showInvisibles: true
+    showIndentGuide: true
+    fontSize: 13
+    softWrapAtPreferredLineLength: true
+  core:
+    themes: [
+      "one-dark-ui"
+      "railscast-theme"
+    ]
+  "tree-view":
+    showOnRightSide: true
+  "exception-reporting":
+    userId: "b511a983-da1a-01ce-5685-8ba536b39955"
+  welcome:
+    showOnStartup: false
+  "atom-lint":
+    showViolationMetadata: false
+  linter:
+    subtleLinterErrors: [
+      "rubocop"
+    ]
+    lintOnFly: false
+    showErrorPanel: false
+  "linter-rubocop":
+    rubocopExecutablePath: "/Users/ross/.rvm/gems/ruby-2.1.1@perceivant_app/bin"
+    executablePath: "/Users/ross/.rvm/gems/ruby-2.1.1@perceivant_app/bin"
+  "autocomplete-plus": {}
+  "rails-transporter": {}
+  "spell-check": {}
+  "git-blame": {}
+  "vim-mode": {}
+  floobits: {}
