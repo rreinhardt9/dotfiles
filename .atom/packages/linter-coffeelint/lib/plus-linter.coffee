@@ -3,6 +3,7 @@ path = require('path')
 
 module.exports = new class # This only needs to be a class to bind lint()
 
+  name: 'CoffeeLint'
   grammarScopes: Core.scopes
   scope: "file"
   lintOnFly: true
@@ -14,7 +15,6 @@ module.exports = new class # This only needs to be a class to bind lint()
   # coffeelint: enable=no_unnecessary_fat_arrows
     filePath = TextEditor.getPath()
     if filePath
-      origPath = if filePath then path.dirname filePath else ''
       source = TextEditor.getText()
 
       scopeName = TextEditor.getGrammar().scopeName
@@ -40,4 +40,4 @@ module.exports = new class # This only needs to be a class to bind lint()
           range: range
         }
 
-      return Core.lint(filePath, origPath, source, scopeName).map(transform)
+      return Core.lint(filePath, source, scopeName).map(transform)

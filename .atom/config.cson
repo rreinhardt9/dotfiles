@@ -3,12 +3,15 @@
     invisibles: {}
     showInvisibles: true
     showIndentGuide: true
-    fontSize: 13
     softWrapAtPreferredLineLength: true
+    fontSize: 13
   core:
     themes: [
       "one-dark-ui"
       "railscast-theme"
+    ]
+    disabledPackages: [
+      "linter-rubocop"
     ]
   "tree-view":
     showOnRightSide: true
@@ -23,13 +26,13 @@
       "rubocop"
     ]
     lintOnFly: false
-    showErrorPanel: false
   "linter-rubocop":
-    rubocopExecutablePath: "/Users/ross/.rvm/gems/ruby-2.1.1@perceivant_app/bin"
-    executablePath: "/Users/ross/.rvm/gems/ruby-2.1.1@perceivant_app/bin"
+    rubocopExecutablePath: "/Users/ross/.rvm/gems/ruby-2.1.1@perceivant_app/bin/rubocop"
+    executablePath: "/Users/ross/.rvm/gems/ruby-2.1.1@perceivant_app/bin/rubocop"
   "autocomplete-plus": {}
   "rails-transporter": {}
   "spell-check": {}
   "git-blame": {}
   "vim-mode": {}
   floobits: {}
+  blame: {}
