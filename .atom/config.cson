@@ -4,7 +4,6 @@
     showInvisibles: true
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
-    fontSize: 13
   core:
     themes: [
       "one-dark-ui"
@@ -27,8 +26,8 @@
     ]
     lintOnFly: false
   "linter-rubocop":
-    rubocopExecutablePath: "/Users/ross/.rvm/gems/ruby-2.1.1@perceivant_app/bin/rubocop"
-    executablePath: "/Users/ross/.rvm/gems/ruby-2.1.1@perceivant_app/bin/rubocop"
+    command: "~/.rvm/gems/ruby-2.2.3@global/wrappers/rubocop"
+    rubocopExecutablePath: "~/.rvm/gems/ruby-2.2.3@global/wrappers/rubocop"
   "autocomplete-plus": {}
   "rails-transporter": {}
   "spell-check": {}
