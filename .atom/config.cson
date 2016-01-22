@@ -4,6 +4,7 @@
     showInvisibles: true
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
+    tabType: "soft"
   core:
     themes: [
       "one-dark-ui"
