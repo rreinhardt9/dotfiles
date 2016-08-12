@@ -2,6 +2,7 @@
 
 import gravatar from 'gravatar'
 import open from 'open'
+import moment from 'moment';
 import { CompositeDisposable } from 'atom'
 import blame from './utils/blame'
 import getCommit from './utils/get-commit'
@@ -47,7 +48,6 @@ class BlameGutterView {
 
       if (this.disposables) { this.disposables.dispose() }
       this.disposables = null
-
       this.removeAllMarkers()
     }
   }
@@ -57,44 +57,44 @@ class BlameGutterView {
     blame(this.editor.getPath(), (result) => {
       this.removeAllMarkers()
 
-      blameLines = []
-      lastHash = null
-
-      commitCount = 0
-      commitColor = null
+      var lastHash = null
+      var commitCount = 0
 
       if (!result) { return }
 
       Object.keys(result).forEach(key => {
         const line = result[key];
 
-        idx = Number(key) - 1
-        hash = line.rev.replace(/\s.*/, '')
+        var lineStr;
+        var hash = line.rev.replace(/\s.*/, '')
 
         if (lastHash !== hash) {
-
-          dateStr = this.formateDate(line.date)
-
-          if (this.isCommited(hash)) {
-            lineStr = `${hash} ${dateStr} ${line.author}`
-          } else {
-            lineStr = `${line.author}`
-          }
-
-          if (commitCount++ % 2 === 0) {
-            rowCls = 'blame-even'
-          } else {
-            rowCls = 'blame-odd'
-          }
+          lineStr = this.formatTooltip(hash, line)
+          rowCls = `blame-${(commitCount++ % 2 === 0) ? 'even' : 'odd'}`
         } else {
           lineStr= ''
         }
 
         lastHash = hash
 
-        this.addMarker(idx, hash, rowCls, lineStr)
+        this.addMarker(Number(key) - 1, hash, rowCls, lineStr)
       })
     })
+  }
+
+  formatTooltip(hash, line) {
+    var dateFormat = atom.config.get('blame.dateFormat');
+    var dateStr = moment(line.date, 'YYYY-MM-DD HH:mm:ss')
+      .format(dateFormat);
+
+    if (this.isCommited(hash)) {
+      return atom.config.get('blame.gutterFormat')
+        .replace('{hash}', `<span class="hash">${hash}</span>`)
+        .replace('{date}', `<span class="date">${dateStr}</span>`)
+        .replace('{author}', `<span class="author">${line.author}</span>`);
+    }
+
+    return `${line.author}`
   }
 
   linkClicked(hash) {
@@ -275,7 +275,7 @@ class BlameGutterView {
                 <div class="subject">${msg.subject}</div>
                 <div class="author">${msg.author}</div>
               </div>
-              <div class="body">${msg.message}</div>
+              <div class="body">${msg.message.replace('\n', '<br>')}</div>
             </div>
           `
         }))

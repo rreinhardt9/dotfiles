@@ -1,38 +1,35 @@
 "*":
-  editor:
-    invisibles: {}
-    showInvisibles: true
-    showIndentGuide: true
-    softWrapAtPreferredLineLength: true
-    tabType: "soft"
+  "atom-lint":
+    showViolationMetadata: false
+  "autocomplete-plus":
+    confirmCompletion: "tab"
+  blame: {}
   core:
     themes: [
       "one-dark-ui"
       "railscast-theme"
     ]
-    disabledPackages: [
-      "linter-rubocop"
-    ]
-  "tree-view":
-    showOnRightSide: true
+  editor:
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    softWrapAtPreferredLineLength: true
+    tabType: "soft"
   "exception-reporting":
     userId: "b511a983-da1a-01ce-5685-8ba536b39955"
-  welcome:
-    showOnStartup: false
-  "atom-lint":
-    showViolationMetadata: false
+  floobits: {}
+  "fuzzy-finder": {}
+  "git-blame": {}
   linter:
-    subtleLinterErrors: [
-      "rubocop"
-    ]
     lintOnFly: false
+    showErrorPanel: false
   "linter-rubocop":
-    command: "~/.rvm/gems/ruby-2.2.3@global/wrappers/rubocop"
-    rubocopExecutablePath: "~/.rvm/gems/ruby-2.2.3@global/wrappers/rubocop"
-  "autocomplete-plus": {}
+    command: "/Users/ross/.rbenv/versions/2.2.3/bin/rubocop"
+    rubocopExecutablePath: "/Users/ross/.rbenv/versions/2.2.3/bin/rubocop"
   "rails-transporter": {}
   "spell-check": {}
-  "git-blame": {}
+  "tree-view":
+    showOnRightSide: true
   "vim-mode": {}
-  floobits: {}
-  blame: {}
+  welcome:
+    showOnStartup: false

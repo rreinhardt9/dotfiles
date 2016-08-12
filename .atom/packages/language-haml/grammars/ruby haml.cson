@@ -34,10 +34,18 @@
         ]
   }
   {
-    'match': '^\\s*(\\-\\#|\\/|\\-\\s*\\/\\*+)\\s*\\S*.*$\\n?'
+    'match': '^(\\s*)(\\/\\[[^\\]].*?$\\n?)'
     'name': 'comment.line.slash.haml'
     'captures':
       '1':
+        'name': 'punctuation.section.comment.haml'
+  }
+  {
+    'begin': '^(\\s*)(\\-\\#|\\/|\\-\\s*\\/\\*+)'
+    'end': '^(?!\\1\\s+|\\n)'
+    'name': 'comment.line.slash.haml'
+    'captures':
+      '2':
         'name': 'punctuation.section.comment.haml'
   }
   {
@@ -106,6 +114,10 @@
             'name': 'string.quoted.double.ruby'
             'patterns': [
               {
+                'match': '\\\\(x\\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)'
+                'name': 'constant.character.escape.ruby'
+              }
+              {
                 'include': '#interpolated_ruby'
               }
             ]
@@ -115,6 +127,10 @@
             'end': '\''
             'name': 'string.quoted.double.ruby'
             'patterns': [
+              {
+                'match': '\\\\(x\\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)'
+                'name': 'constant.character.escape.ruby'
+              }
               {
                 'include': '#interpolated_ruby'
               }
@@ -167,7 +183,7 @@
   }
   {
     'begin': '^(\\s*)(:php)$'
-    'end': '^(?!\\1\\s+)'
+    'end': '^(?!\\1\\s+|\\n)'
     'name': 'meta.embedded.php'
     'captures':
       '2':
@@ -180,7 +196,7 @@
   }
   {
     'begin': '^(\\s*)(:ruby)$'
-    'end': '^(?!\\1\\s+)'
+    'end': '^(?!\\1\\s+|\\n)'
     'name': 'meta.embedded.ruby'
     'captures':
       '2':
@@ -193,7 +209,7 @@
   }
   {
     'begin': '^(\\s*)(:markdown)$'
-    'end': '^(?!\\1\\s+)'
+    'end': '^(?!\\1\\s+|\\n)'
     'name': 'meta.embedded.markdown'
     'captures':
       '2':
@@ -206,7 +222,7 @@
   }
   {
     'begin': '^(\\s*)(:coffee(script)?)$'
-    'end': '^(?!\\1\\s+)'
+    'end': '^(?!\\1\\s+|\\n)'
     'name': 'meta.embedded.coffee'
     'captures':
       '2':
@@ -219,7 +235,7 @@
   }
   {
     'begin': '^(\\s*)(:javascript)$'
-    'end': '^(?!\\1\\s+)'
+    'end': '^(?!\\1\\s+|\\n)'
     'name': 'meta.embedded.js'
     'captures':
       '2':
@@ -232,7 +248,7 @@
   }
   {
     'begin': '^(\\s*)(:(css|styles?))$'
-    'end': '^(?!\\1\\s+)'
+    'end': '^(?!\\1\\s+|\\n)'
     'name': 'meta.embedded.css'
     'captures':
       '2':
@@ -245,7 +261,7 @@
   }
   {
     'begin': '^(\\s*)(:sass)$'
-    'end': '^(?!\\1\\s+)'
+    'end': '^(?!\\1\\s+|\\n)'
     'name': 'meta.embedded.sass'
     'captures':
       '2':
@@ -258,7 +274,7 @@
   }
   {
     'begin': '^(\\s*)(:scss)$'
-    'end': '^(?!\\1\\s+)'
+    'end': '^(?!\\1\\s+|\\n)'
     'name': 'meta.embedded.scss'
     'captures':
       '2':

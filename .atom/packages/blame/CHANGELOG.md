@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.10.0
+* Use only first line as subject (#17)
+
+## 0.9.1
+* Fix styling for long subjects
+* Add the possibility to customize gutter colors
+
+## 0.9.0
+* Add configs to customize gutter and date fromat
+
 ## 0.8.1
 * Fix resizing
 
