@@ -10,6 +10,7 @@
 	st = status
 	unstage = reset HEAD --
 	last = log -1 HEAD
+  dsf = "!git diff --color $@ | diff-so-fancy"
 [push]
 	default = current
 [diff]
@@ -19,3 +20,4 @@
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.cvsignore
+	pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
