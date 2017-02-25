@@ -1,77 +1,33 @@
 'use strict';
 'use babel';
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var _atom = require('atom');
 
 var _helpers = require('./helpers');
 
-var _escapeHtml = require('escape-html');
+var _workerHelpers = require('./worker-helpers');
 
-var _escapeHtml2 = _interopRequireDefault(_escapeHtml);
+var _isConfigAtHomeRoot = require('./is-config-at-home-root');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+// eslint-disable-next-line import/no-extraneous-dependencies, import/extensions
+
+
+// Configuration
+const scopes = [];
+let showRule;
+let ignoredRulesWhenModified;
+let ignoredRulesWhenFixing;
+let disableWhenNoEslintConfig;
+
 module.exports = {
-  config: {
-    lintHtmlFiles: {
-      title: 'Lint HTML Files',
-      description: 'You should also add `eslint-plugin-html` to your .eslintrc plugins',
-      type: 'boolean',
-      default: false
-    },
-    useGlobalEslint: {
-      title: 'Use global ESLint installation',
-      description: 'Make sure you have it in your $PATH',
-      type: 'boolean',
-      default: false
-    },
-    showRuleIdInMessage: {
-      title: 'Show Rule ID in Messages',
-      type: 'boolean',
-      default: true
-    },
-    disableWhenNoEslintConfig: {
-      title: 'Disable when no ESLint config is found (in package.json or .eslintrc)',
-      type: 'boolean',
-      default: true
-    },
-    eslintrcPath: {
-      title: '.eslintrc Path',
-      description: "It will only be used when there's no config file in project",
-      type: 'string',
-      default: ''
-    },
-    globalNodePath: {
-      title: 'Global Node Installation Path',
-      description: 'Write the value of `npm get prefix` here',
-      type: 'string',
-      default: ''
-    },
-    eslintRulesDir: {
-      title: 'ESLint Rules Dir',
-      description: 'Specify a directory for ESLint to load rules from',
-      type: 'string',
-      default: ''
-    },
-    disableEslintIgnore: {
-      title: 'Disable using .eslintignore files',
-      type: 'boolean',
-      default: false
-    },
-    disableFSCache: {
-      title: 'Disable FileSystem Cache',
-      description: 'Paths of node_modules, .eslintignore and others are cached',
-      type: 'boolean',
-      default: false
-    },
-    fixOnSave: {
-      title: 'Fix errors on save',
-      description: 'Have eslint attempt to fix some errors automatically when saving the file.',
-      type: 'boolean',
-      default: false
-    }
-  },
-  activate: function activate() {
+  activate() {
     var _this = this;
 
     require('atom-package-deps').install();
@@ -79,35 +35,72 @@ module.exports = {
     this.subscriptions = new _atom.CompositeDisposable();
     this.active = true;
     this.worker = null;
-    this.scopes = ['source.js', 'source.jsx', 'source.js.jsx', 'source.babel', 'source.js-semantic'];
 
-    var embeddedScope = 'source.js.embedded.html';
-    this.subscriptions.add(atom.config.observe('linter-eslint.lintHtmlFiles', function (lintHtmlFiles) {
+    this.subscriptions.add(atom.config.observe('linter-eslint.scopes', value => {
+      // Remove any old scopes
+      scopes.splice(0, scopes.length);
+      // Add the current scopes
+      Array.prototype.push.apply(scopes, value);
+    }));
+
+    const embeddedScope = 'source.js.embedded.html';
+    this.subscriptions.add(atom.config.observe('linter-eslint.lintHtmlFiles', lintHtmlFiles => {
       if (lintHtmlFiles) {
-        _this.scopes.push(embeddedScope);
-      } else {
-        if (_this.scopes.indexOf(embeddedScope) !== -1) {
-          _this.scopes.splice(_this.scopes.indexOf(embeddedScope), 1);
-        }
+        scopes.push(embeddedScope);
+      } else if (scopes.indexOf(embeddedScope) !== -1) {
+        scopes.splice(scopes.indexOf(embeddedScope), 1);
       }
     }));
-    this.subscriptions.add(atom.workspace.observeTextEditors(function (editor) {
-      editor.onDidSave(function () {
-        if (_this.scopes.indexOf(editor.getGrammar().scopeName) !== -1 && atom.config.get('linter-eslint.fixOnSave')) {
-          _this.worker.request('job', {
+
+    this.subscriptions.add(atom.workspace.observeTextEditors(editor => {
+      editor.onDidSave(() => {
+        if (scopes.indexOf(editor.getGrammar().scopeName) !== -1 && atom.config.get('linter-eslint.fixOnSave')) {
+          const filePath = editor.getPath();
+          const projectPath = atom.project.relativizePath(filePath)[0];
+
+          // Do not try to fix if linting should be disabled
+          const fileDir = _path2.default.dirname(filePath);
+          const configPath = (0, _workerHelpers.getConfigPath)(fileDir);
+          const noProjectConfig = configPath === null || (0, _isConfigAtHomeRoot.isConfigAtHomeRoot)(configPath);
+          if (noProjectConfig && disableWhenNoEslintConfig) return;
+
+          let rules = {};
+          if (Object.keys(ignoredRulesWhenFixing).length > 0) {
+            rules = ignoredRulesWhenFixing;
+          }
+
+          this.worker.request('job', {
             type: 'fix',
             config: atom.config.get('linter-eslint'),
-            filePath: editor.getPath()
-          }).catch(function (response) {
-            return atom.notifications.addWarning(response);
+            rules,
+            filePath,
+            projectPath
+          }).catch(err => {
+            atom.notifications.addWarning(err.message);
           });
         }
       });
     }));
+
     this.subscriptions.add(atom.commands.add('atom-text-editor', {
-      'linter-eslint:fix-file': function linterEslintFixFile() {
-        var textEditor = atom.workspace.getActiveTextEditor();
-        var filePath = textEditor.getPath();
+      'linter-eslint:debug': (() => {
+        var _ref = _asyncToGenerator(function* () {
+          const debugString = yield (0, _helpers.generateDebugString)(_this.worker);
+          const notificationOptions = { detail: debugString, dismissable: true };
+          atom.notifications.addInfo('linter-eslint debugging information', notificationOptions);
+        });
+
+        return function linterEslintDebug() {
+          return _ref.apply(this, arguments);
+        };
+      })()
+    }));
+
+    this.subscriptions.add(atom.commands.add('atom-text-editor', {
+      'linter-eslint:fix-file': () => {
+        const textEditor = atom.workspace.getActiveTextEditor();
+        const filePath = textEditor.getPath();
+        const projectPath = atom.project.relativizePath(filePath)[0];
 
         if (!textEditor || textEditor.isModified()) {
           // Abort for invalid or unsaved text editors
@@ -115,28 +108,49 @@ module.exports = {
           return;
         }
 
-        _this.worker.request('job', {
+        let rules = {};
+        if (textEditor.isModified() && Object.keys(ignoredRulesWhenFixing).length > 0) {
+          rules = ignoredRulesWhenFixing;
+        }
+
+        this.worker.request('job', {
           type: 'fix',
           config: atom.config.get('linter-eslint'),
-          filePath: filePath
-        }).then(function (response) {
-          return atom.notifications.addSuccess(response);
-        }).catch(function (response) {
-          return atom.notifications.addWarning(response);
+          rules,
+          filePath,
+          projectPath
+        }).then(response => atom.notifications.addSuccess(response)).catch(err => {
+          atom.notifications.addWarning(err.message);
         });
       }
     }));
 
-    var initializeWorker = function initializeWorker() {
+    this.subscriptions.add(atom.config.observe('linter-eslint.showRuleIdInMessage', value => {
+      showRule = value;
+    }));
+
+    this.subscriptions.add(atom.config.observe('linter-eslint.disableWhenNoEslintConfig', value => {
+      disableWhenNoEslintConfig = value;
+    }));
+
+    this.subscriptions.add(atom.config.observe('linter-eslint.rulesToSilenceWhileTyping', ids => {
+      ignoredRulesWhenModified = (0, _helpers.idsToIgnoredRules)(ids);
+    }));
+
+    this.subscriptions.add(atom.config.observe('linter-eslint.rulesToDisableWhileFixing', ids => {
+      ignoredRulesWhenFixing = (0, _helpers.idsToIgnoredRules)(ids);
+    }));
+
+    const initializeWorker = () => {
       var _spawnWorker = (0, _helpers.spawnWorker)();
 
-      var worker = _spawnWorker.worker;
-      var subscription = _spawnWorker.subscription;
+      const worker = _spawnWorker.worker,
+            subscription = _spawnWorker.subscription;
 
-      _this.worker = worker;
-      _this.subscriptions.add(subscription);
-      worker.onDidExit(function () {
-        if (_this.active) {
+      this.worker = worker;
+      this.subscriptions.add(subscription);
+      worker.onDidExit(() => {
+        if (this.active) {
           (0, _helpers.showError)('Worker died unexpectedly', 'Check your console for more ' + 'info. A new worker will be spawned instantly.');
           setTimeout(initializeWorker, 1000);
         }
@@ -144,74 +158,46 @@ module.exports = {
     };
     initializeWorker();
   },
-  deactivate: function deactivate() {
+  deactivate() {
     this.active = false;
     this.subscriptions.dispose();
   },
-  provideLinter: function provideLinter() {
-    var _this2 = this;
-
-    var Helpers = require('atom-linter');
+  provideLinter() {
     return {
       name: 'ESLint',
-      grammarScopes: this.scopes,
+      grammarScopes: scopes,
       scope: 'file',
       lintOnFly: true,
-      lint: function lint(textEditor) {
-        var text = textEditor.getText();
+      lint: textEditor => {
+        const text = textEditor.getText();
         if (text.length === 0) {
           return Promise.resolve([]);
         }
-        var filePath = textEditor.getPath();
-        var showRule = atom.config.get('linter-eslint.showRuleIdInMessage');
+        const filePath = textEditor.getPath();
 
-        return _this2.worker.request('job', {
-          contents: text,
+        let rules = {};
+        if (textEditor.isModified() && Object.keys(ignoredRulesWhenModified).length > 0) {
+          rules = ignoredRulesWhenModified;
+        }
+
+        return this.worker.request('job', {
           type: 'lint',
+          contents: text,
           config: atom.config.get('linter-eslint'),
-          filePath: filePath
-        }).then(function (response) {
-          return response.map(function (_ref) {
-            var message = _ref.message;
-            var line = _ref.line;
-            var severity = _ref.severity;
-            var ruleId = _ref.ruleId;
-            var column = _ref.column;
-            var fix = _ref.fix;
-
-            var textBuffer = textEditor.getBuffer();
-            var linterFix = null;
-            if (fix) {
-              var fixRange = new _atom.Range(textBuffer.positionForCharacterIndex(fix.range[0]), textBuffer.positionForCharacterIndex(fix.range[1]));
-              linterFix = {
-                range: fixRange,
-                newText: fix.text
-              };
-            }
-            var range = Helpers.rangeFromLineNumber(textEditor, line - 1);
-            if (column) {
-              range[0][1] = column - 1;
-            }
-            if (column > range[1][1]) {
-              range[1][1] = column - 1;
-            }
-            var ret = {
-              filePath: filePath,
-              type: severity === 1 ? 'Warning' : 'Error',
-              range: range
-            };
-            if (showRule) {
-              var elName = ruleId ? 'a' : 'span';
-              var href = ruleId ? ' href=' + (0, _helpers.ruleURI)(ruleId) : '';
-              ret.html = '<' + elName + href + ' class="badge badge-flexible eslint">' + ((ruleId || 'Fatal') + '</' + elName + '> ' + (0, _escapeHtml2.default)(message));
-            } else {
-              ret.text = message;
-            }
-            if (linterFix) {
-              ret.fix = linterFix;
-            }
-            return ret;
-          });
+          rules,
+          filePath,
+          projectPath: atom.project.relativizePath(filePath)[0] || ''
+        }).then(response => {
+          if (textEditor.getText() !== text) {
+            /*
+               The editor text has been modified since the lint was triggered,
+               as we can't be sure that the results will map properly back to
+               the new contents, simply return `null` to tell the
+               `provideLinter` consumer not to update the saved results.
+             */
+            return null;
+          }
+          return (0, _helpers.processESLintMessages)(response, textEditor, showRule, this.worker);
         });
       }
     };

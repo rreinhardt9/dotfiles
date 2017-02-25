@@ -11,6 +11,7 @@
 	unstage = reset HEAD --
 	last = log -1 HEAD
   dsf = "!git diff --color $@ | diff-so-fancy"
+  glog = log --graph --decorate --oneline
 [push]
 	default = current
 [diff]

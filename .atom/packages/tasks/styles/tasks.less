@@ -1,0 +1,20 @@
+@import "ui-variables";
+
+atom-text-editor.editor {
+  .syntax--tasks {
+    &.syntax--header { color: @text-color-warning; }
+    &.syntax--marker { color: @text-color-subtle; }
+    &.syntax--attribute { color: @text-color-info; }
+
+    &.syntax--done,
+    &.syntax--cancelled {
+      &.syntax--text { color: @text-color-subtle; }
+      .syntax--marker { color: @text-color-success; }
+      .syntax--attribute {
+        color: mix(@text-color-info, @text-color-subtle, 30%);
+      }
+    }
+
+    &.syntax--cancelled .syntax--marker { color: @text-color-error; }
+  }
+}

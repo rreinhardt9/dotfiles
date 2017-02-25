@@ -1,0 +1,8 @@
+Yard:
+  - Rake leaves
+  - Put away hose @tag1 and something else @tag2
+  - Clear garden
+Groceries:
+  - Milk
+  - Eggs
+  - Lettuce

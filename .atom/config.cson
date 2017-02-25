@@ -5,6 +5,10 @@
     confirmCompletion: "tab"
   blame: {}
   core:
+    disabledPackages: [
+      "fonts"
+    ]
+    telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
       "railscast-theme"
@@ -18,6 +22,8 @@
   "exception-reporting":
     userId: "b511a983-da1a-01ce-5685-8ba536b39955"
   floobits: {}
+  fonts:
+    fontFamily: "DejaVu Mono"
   "fuzzy-finder": {}
   "git-blame": {}
   linter:
@@ -33,3 +39,5 @@
   "vim-mode": {}
   welcome:
     showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false

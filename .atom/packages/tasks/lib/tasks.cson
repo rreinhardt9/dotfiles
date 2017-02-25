@@ -1,0 +1,59 @@
+'fileTypes': [
+  'todo'
+  'taskpaper'
+]
+'scopeName': 'source.todo'
+
+'name': 'Tasks'
+'patterns': [
+
+  {
+    'match': '^([\\s]*)(.*):$'
+    'name': 'control.tasks.header.${2:/downcase}'
+    'captures': '2': 'name': 'control.tasks.header-title'
+  }
+
+  {
+    'begin': '^([\\s]*)(✔)(?=.*@done)'
+    'end': '$'
+    'name': 'tasks.text.done.md'
+    'beginCaptures':
+      '2': 'name': 'keyword.tasks.marker'
+    'patterns': [
+      {'include': '#attribute'}
+    ]
+  }
+
+  {
+    'begin': '^([\\s]*)(✘)(?=.*@cancelled)'
+    'end': '$'
+    'name': 'tasks.text.cancelled.md'
+    'beginCaptures':
+      '2': 'name': 'keyword.tasks.marker'
+    'patterns': [
+      {'include': '#marker'}
+      {'include': '#attribute'}
+    ]
+  }
+
+  {
+    'match': '^([\\s]*)(☐)((?:(?!:$).)*)$'
+    'name': 'tasks.text.md'
+    'captures':
+      '2': 'name': 'keyword.tasks.marker'
+      '3':
+        'patterns': [
+          {'include': '#attribute'}
+          {'include': 'text.md'}
+          {'include': 'text.hyperlink'}
+        ]
+  }
+]
+
+'repository':
+  'attribute':
+    'match': '@([\\w]+)(?:\\((.*?)\\))?'
+    'name': 'tasks.attribute.$1'
+    'captures':
+      '1': 'name': 'tasks.attribute-name'
+      '2': 'name': 'tasks.attribute-value'

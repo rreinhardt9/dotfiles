@@ -1,4 +1,7 @@
 '.source.elixir':
+  'callback':
+    'prefix': 'callback'
+    'body': '@callback ${1:function_name}($2) :: ${3:type}'
   'case':
     'prefix': 'case'
     'body': 'case $1 do\n\t$0\nend'
@@ -25,7 +28,7 @@
     'body': 'defstruct [$1]'
   'doc':
     'prefix': 'doc'
-    'body': '@doc """\n$0\n"""'
+    'body': '@doc """$0\n"""'
   'do':
     'prefix': 'do'
     'body': 'do\n\t$0\nend'
@@ -42,8 +45,8 @@
     'prefix': 'idefp'
     'body': 'defp $1, do: $2'
   'moduledoc':
-    'prefix': 'mdoc'
-    'body': '@moduledoc """\n$0\n"""'
+    'prefix': 'moduledoc'
+    'body': '@moduledoc """$0\n"""'
   'defprotocol':
     'prefix': 'defpro'
     'body': 'defprotocol $1 do\n\t$0\nend'
@@ -59,15 +62,48 @@
   'IO.puts':
     'prefix': 'ip'
     'body': 'IO.puts($0)'
-  'test':
-    'prefix': 'test'
-    'body': 'test "$1" do\n\t$0\nend'
   'Logger.debug':
     'prefix': 'deb'
     'body': 'Logger.debug "$0"'
   'Logger.debug inspect':
     'prefix': 'debi'
     'body': 'Logger.debug "\#{inspect $0}"'
+  'spec':
+    'prefix': 'spec'
+    'body': '@spec ${1:function_name}($2) :: ${3:type}'
+
+  'describe':
+    'prefix': 'describe'
+    'body': """
+      describe "${1:tests}" do
+        $2
+      end
+    """
+
+  'setup':
+    'prefix': 'setup'
+    'body': """
+      setup ${1:%{$2\\}} do
+        $3
+      end
+    """
+
+  'inline setup':
+    'prefix': 'isetup'
+    'body': 'setup [$1]'
+
+  'test':
+    'prefix': 'test'
+    'body': 'test "$1" do\n\t$0\nend'
+  'type':
+    'prefix': 'type'
+    'body': '@type ${1:type_name} :: ${2:type}'
+  'typedoc':
+    'prefix': 'typedoc'
+    'body': '@typedoc """$0\n"""'
+  'fn':
+    'prefix': 'fn'
+    'body': 'fn($1) -> ${2:...} end'
 '.text.elixir':
   '<% inline %>':
     'prefix': '%'

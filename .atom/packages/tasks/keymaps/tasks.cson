@@ -1,0 +1,26 @@
+# Keybindings require three things to be fully defined: A selector that is
+# matched against the focused element, the keystroke and the command to
+# execute.
+#
+# Below is a basic keybinding which registers on all platforms by applying to
+# the root workspace element.
+
+# For more detailed documentation see
+# https://atom.io/docs/latest/advanced/keymaps
+'.platform-darwin atom-workspace atom-text-editor:not(.mini)[data-grammar~="todo"]':
+  'cmd-enter': 'tasks:add'
+  'cmd-shift-enter': 'tasks:add-above'
+  'cmd-d': 'tasks:complete'
+  'cmd-shift-a': 'tasks:archive'
+  'ctrl-c': 'tasks:cancel'
+  'cmd-shift-l': 'tasks:convert-to-task'
+  'ctrl-s': 'tasks:set-timestamp'
+
+'.platform-win32 atom-workspace atom-text-editor:not(.mini)[data-grammar~="todo"], .platform-linux atom-workspace atom-text-editor:not(.mini)[data-grammar~="todo"]':
+  'ctrl-enter': 'tasks:add'
+  'ctrl-shift-enter': 'tasks:add-above'
+  'ctrl-d': 'tasks:complete'
+  'ctrl-shift-a': 'tasks:archive'
+  'alt-c': 'tasks:cancel'
+  'ctrl-shift-l': 'tasks:convert-to-task'
+  'ctrl-shift-s': 'tasks:set-timestamp'
