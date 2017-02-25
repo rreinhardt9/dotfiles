@@ -32,6 +32,9 @@
   "linter-rubocop":
     command: "/Users/ross/.rbenv/versions/2.2.3/bin/rubocop"
     rubocopExecutablePath: "/Users/ross/.rbenv/versions/2.2.3/bin/rubocop"
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
   "rails-transporter": {}
   "spell-check": {}
   "tree-view":

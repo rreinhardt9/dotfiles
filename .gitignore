@@ -4,6 +4,7 @@
 [._]s[a-w][a-z]
 *.un~
 Session.vim
-.atom/storage
-.atom/compile-cache
-.atom/node-gyp
+.atom/*
+!.atom/*.cson
+!.atom/*.coffee
+!.atom/*.less
