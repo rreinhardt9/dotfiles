@@ -36,7 +36,15 @@
     createOnChange: true
     forceOverwrite: true
   "rails-transporter": {}
-  "spell-check": {}
+  "spell-check":
+    grammars: [
+      "source.asciidoc"
+      "source.gfm"
+      "text.git-commit"
+      "text.plain"
+      "text.plain.null-grammar"
+      "source.todo"
+    ]
   "tree-view":
     showOnRightSide: true
   "vim-mode": {}
