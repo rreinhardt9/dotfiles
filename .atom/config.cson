@@ -30,8 +30,8 @@
     lintOnFly: false
     showErrorPanel: false
   "linter-rubocop":
-    command: "/Users/ross/.rbenv/versions/2.2.3/bin/rubocop"
-    rubocopExecutablePath: "/Users/ross/.rbenv/versions/2.2.3/bin/rubocop"
+    command: "/Users/ross/.rbenv/shims/bundle exec rubocop"
+    rubocopExecutablePath: "/Users/ross/.rbenv/shims/bundle exec rubocop"
   "package-sync":
     createOnChange: true
     forceOverwrite: true
