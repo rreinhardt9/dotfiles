@@ -5,15 +5,13 @@
     confirmCompletion: "tab"
   blame: {}
   core:
-    disabledPackages: [
-      "fonts"
-    ]
     telemetryConsent: "limited"
     themes: [
       "one-dark-ui"
       "railscast-theme"
     ]
   editor:
+    fontSize: 15
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -23,7 +21,7 @@
     userId: "b511a983-da1a-01ce-5685-8ba536b39955"
   floobits: {}
   fonts:
-    fontFamily: "DejaVu Mono"
+    fontFamily: "FiraCode"
   "fuzzy-finder": {}
   "git-blame": {}
   linter:
