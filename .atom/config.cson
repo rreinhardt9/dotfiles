@@ -24,12 +24,13 @@
     fontFamily: "FiraCode"
   "fuzzy-finder": {}
   "git-blame": {}
-  linter:
-    lintOnFly: false
-    showErrorPanel: false
+  linter: {}
   "linter-rubocop":
     command: "/Users/ross/.rbenv/shims/bundle exec rubocop"
+    disableWhenNoConfigFile: true
     rubocopExecutablePath: "/Users/ross/.rbenv/shims/bundle exec rubocop"
+  "linter-ui-default":
+    panelHeight: 69
   "package-sync":
     createOnChange: true
     forceOverwrite: true
