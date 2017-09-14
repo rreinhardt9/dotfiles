@@ -20,8 +20,10 @@ Plugin 'honza/vim-snippets'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Keithbsmiley/rspec.vim'
-Plugin 'Railscasts-Theme-GUIand256color'
 Plugin 'Syntastic'
+# Themes
+Plugin 'Railscasts-Theme-GUIand256color'
+Plugin 'Solarized'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
