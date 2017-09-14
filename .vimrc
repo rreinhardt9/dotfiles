@@ -34,13 +34,21 @@ endif
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=50 " keep 50 lines of command line history
+set ruler " show the cursor position all the time
+set showcmd " display incomplete commands
+set incsearch " do incremental searching
 set number " show line numbers
 set autoread " Auto-reload changed files
 set switchbuf=newtab
+set tabstop=2 shiftwidth=2
+set expandtab
+set ignorecase
+set smartcase " case-smart searching
+set laststatus=2 " Always show the status bar
+
+" Display extra whitespace, excluding ,eol:¬ for now
+set list listchars=tab:»·,trail:·,nbsp:·
 
 " The Silver Searcher
 if executable('ag')
@@ -136,13 +144,4 @@ endif
 
 let ruby_space_errors = 1
 
-set tabstop=2 shiftwidth=2
-set expandtab
 
-set ignorecase
-set smartcase " case-smart searching
-
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
