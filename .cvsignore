@@ -1,2 +1,8 @@
+# Ctags
 tags
+
+# Mac os
 .DS_Store
+
+# Vim
+.*.s??
