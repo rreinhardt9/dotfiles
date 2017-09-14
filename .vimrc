@@ -1,3 +1,6 @@
+" Leader
+let mapleader = " "
+
 colorscheme railscasts
 
 set nocompatible              " be iMproved, required
