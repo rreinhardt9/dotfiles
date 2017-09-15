@@ -1,8 +1,6 @@
 " Leader
 let mapleader = " "
 
-colorscheme railscasts
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -21,9 +19,9 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Keithbsmiley/rspec.vim'
 Plugin 'Syntastic'
-# Themes
+" Themes
 Plugin 'Railscasts-Theme-GUIand256color'
-Plugin 'Solarized'
+Plugin 'vim-colors-solarized'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -35,6 +33,15 @@ endif
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+
+syntax enable
+
+" Background color from color scheme
+set background=dark
+
+colorscheme solarized
+
+call togglebg#map("<leader>b")
 
 set history=50 " keep 50 lines of command line history
 set ruler " show the cursor position all the time
