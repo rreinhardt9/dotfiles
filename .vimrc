@@ -2,28 +2,6 @@
 let mapleader = " "
 
 set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'ctrlp.vim'
-Plugin 'tpope/vim-rails'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Keithbsmiley/rspec.vim'
-Plugin 'Syntastic'
-" Themes
-Plugin 'Railscasts-Theme-GUIand256color'
-Plugin 'vim-colors-solarized'
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -38,7 +16,6 @@ set backspace=indent,eol,start
 syntax enable
 set background=dark
 colorscheme solarized
-call togglebg#map("<leader>b")
 
 set history=50 " keep 50 lines of command line history
 set ruler " show the cursor position all the time
