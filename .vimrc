@@ -34,13 +34,10 @@ endif
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" Set up solarized theme
 syntax enable
-
-" Background color from color scheme
 set background=dark
-
 colorscheme solarized
-
 call togglebg#map("<leader>b")
 
 set history=50 " keep 50 lines of command line history
@@ -82,10 +79,11 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
