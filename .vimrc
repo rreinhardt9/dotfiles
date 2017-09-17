@@ -29,6 +29,7 @@ set expandtab
 set ignorecase
 set smartcase " case-smart searching
 set laststatus=2 " Always show the status bar
+set clipboard=unnamed
 
 " Display extra whitespace, excluding ,eol:¬ for now
 set list listchars=tab:»·,trail:·,nbsp:·
