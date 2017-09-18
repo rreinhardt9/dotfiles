@@ -19,6 +19,5 @@
 [merge]
 	tool = meld
 [core]
-	editor = /usr/bin/vim
 	excludesfile = ~/.cvsignore
 	pager = diff-highlight | diff-so-fancy | less --tabs=1,5 -R
