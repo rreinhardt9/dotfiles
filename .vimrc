@@ -21,7 +21,6 @@ set history=50 " keep 50 lines of command line history
 set ruler " show the cursor position all the time
 set showcmd " display incomplete commands
 set incsearch " do incremental searching
-set number " show line numbers
 set autoread " Auto-reload changed files
 set switchbuf=newtab
 set tabstop=2 shiftwidth=2
@@ -33,6 +32,14 @@ set clipboard=unnamed
 
 " Display extra whitespace, excluding ,eol:¬ for now
 set list listchars=tab:»·,trail:·,nbsp:·
+
+set number relativenumber " hybrid line numbers
+" Use hybrid line numbers where it makes sense, otherwise use absolute
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " The Silver Searcher
 if executable('ag')
