@@ -5,6 +5,12 @@ fi
 
 eval "$(rbenv init -)"
 
+# Use python from brew
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# Include python executable in path
+export PATH="/Users/ross/Library/Python/2.7/bin:$PATH"
+
 parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
