@@ -24,24 +24,24 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-set history=50 " keep 50 lines of command line history
-set ruler " show the cursor position all the time
-set cursorline cursorcolumn
-set showcmd " display incomplete commands
-set incsearch " do incremental searching
 set autoread " Auto-reload changed files
+set clipboard=unnamed
+set cursorline cursorcolumn
+set expandtab
+set history=50 " keep 50 lines of command line history
+set ignorecase
+set incsearch " do incremental searching
+set laststatus=2 " Always show the status bar
+set lazyredraw
+set ruler " show the cursor position all the time
+set scrolloff=1 " Keep one like visible at top and bottom for vertical scroll
+set sessionoptions-=options " Don't remember options when saving session
+set showcmd " display incomplete commands
+set sidescrolloff=5 " Keep 5 columns visible at edge for horizontal scroll
+set smartcase " case-smart searching
 set switchbuf=newtab
 set tabstop=2 shiftwidth=2
-set expandtab
-set ignorecase
-set smartcase " case-smart searching
-set laststatus=2 " Always show the status bar
-set clipboard=unnamed
-set lazyredraw
 set wildmenu " show menu for autocompleting vim commands
-set scrolloff=1 " Keep one like visible at top and bottom for vertical scroll
-set sidescrolloff=5 " Keep 5 columns visible at edge for horizontal scroll
-set sessionoptions-=options " Don't remember options when saving session
 
 if !has('nvim') && &ttimeoutlen == -1
   set ttimeout
