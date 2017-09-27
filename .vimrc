@@ -38,6 +38,15 @@ set smartcase " case-smart searching
 set laststatus=2 " Always show the status bar
 set clipboard=unnamed
 set lazyredraw
+set wildmenu " show menu for autocompleting vim commands
+set scrolloff=1 " Keep one like visible at top and bottom for vertical scroll
+set sidescrolloff=5 " Keep 5 columns visible at edge for horizontal scroll
+set sessionoptions-=options " Don't remember options when saving session
+
+if !has('nvim') && &ttimeoutlen == -1
+  set ttimeout
+  set ttimeoutlen=100
+endif
 
 " Display extra whitespace, excluding ,eol:¬ for now
 set list listchars=tab:»·,trail:·,nbsp:·
