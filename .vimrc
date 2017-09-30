@@ -6,6 +6,9 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+command! Wd w|bd " Command to save and close buffer
+
 let g:rspec_command = "bin/rspec {spec}"
 
 set nocompatible              " be iMproved, required
