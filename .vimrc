@@ -47,6 +47,9 @@ set smartcase " case-smart searching
 set switchbuf=newtab
 set tabstop=2 shiftwidth=2
 set wildmenu " show menu for autocompleting vim commands
+" Remember constants (!)
+" Remember buffers that were open (used for restoring them if desired) (%)
+set viminfo^=!,%
 
 if !has('nvim') && &ttimeoutlen == -1
   set ttimeout
