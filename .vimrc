@@ -32,6 +32,7 @@ colorscheme solarized
 set autoread " Auto-reload changed files
 set clipboard=unnamed
 set cursorline cursorcolumn
+set display=lastline " Show as much as possible if really long lines are cut off
 set expandtab
 set history=50 " keep 50 lines of command line history
 set ignorecase
