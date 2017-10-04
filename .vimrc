@@ -3,7 +3,7 @@ let mapleader = " "
 
 " Strip trailing whitespace
 noremap <Leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-nnoremap <Leader>V :e $MYVIMRC<CR>
+nnoremap <Leader>, :e $MYVIMRC<CR>
 
 " RSpec.vim mappings
 noremap <Leader>t :call RunCurrentSpecFile()<CR>
