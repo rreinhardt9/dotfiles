@@ -18,11 +18,6 @@ let g:rspec_command = "bin/rspec {spec}"
 set nocompatible              " be iMproved, required
 filetype plugin indent on    " required
 
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 packadd! matchit " Enable matchit package
 
 " allow backspacing over everything in insert mode
