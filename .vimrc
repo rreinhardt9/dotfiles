@@ -84,6 +84,8 @@ if executable('ag')
   nnoremap \ :Ag<SPACE>
 endif
 
+" javascript-libraries-syntax
+let g:used_javascript_libs = 'jquery,underscore,react,flux,d3'
 
 " configure syntastic
 set statusline+=%#warningmsg#
