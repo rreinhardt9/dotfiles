@@ -19,3 +19,6 @@
 [submodule ".vim/pack/plugins/start/javascript-libraries-syntax"]
 	path = .vim/pack/plugins/start/javascript-libraries-syntax
 	url = git@github.com:othree/javascript-libraries-syntax.vim.git
+[submodule ".vim/pack/plugins/start/vim-jsx"]
+	path = .vim/pack/plugins/start/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git

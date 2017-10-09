@@ -87,6 +87,9 @@ endif
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'jquery,underscore,react,flux,d3'
 
+" vim-jsx
+let g:jsx_ext_required = 0
+
 " configure syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
