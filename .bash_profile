@@ -5,6 +5,9 @@ fi
 
 eval "$(rbenv init -)"
 
+# Use sqlite from homebrew
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
 # Use python from brew
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
