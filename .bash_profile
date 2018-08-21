@@ -26,6 +26,7 @@ fi
 
 alias be='bundle exec'
 alias prettyjson="python -m json.tool"
+alias do-that-thang="git checkout master && git pull && bundle && be rake db:migrate"
 
 # If you installed the SDK via Homebrew, otherwise ~/Library/Android/sdk
 export ANDROID_HOME=/usr/local/opt/android-sdk
