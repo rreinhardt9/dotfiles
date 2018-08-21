@@ -4,6 +4,7 @@
 --exclude=log/*
 --exclude=*.min.js
 --exclude=*node_modules/*
+--exclude=vendor/bundle
 
 --langdef=CoffeeScript
 --langmap=CoffeeScript:.coffee
