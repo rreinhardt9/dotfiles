@@ -13,8 +13,6 @@ noremap <Leader>a :call RunAllSpecs()<CR>
 
 command! Wd w|bd " Command to save and close buffer
 
-let g:rspec_command = "bin/rspec {spec}"
-
 set nocompatible              " be iMproved, required
 filetype plugin indent on    " required
 
@@ -34,6 +32,7 @@ set cursorline cursorcolumn
 set display=lastline " Show as much as possible if really long lines are cut off
 set expandtab
 set history=50 " keep 50 lines of command line history
+set hidden " When leaving a buffer with unsaved changes, keep it loaded but hidden
 set ignorecase
 set incsearch " do incremental searching
 set laststatus=2 " Always show the status bar
@@ -44,7 +43,7 @@ set sessionoptions-=options " Don't remember options when saving session
 set showcmd " display incomplete commands
 set sidescrolloff=5 " Keep 5 columns visible at edge for horizontal scroll
 set smartcase " case-smart searching
-set switchbuf=newtab
+" set switchbuf=newtab
 set tabstop=2 shiftwidth=2
 set wildmenu " show menu for autocompleting vim commands
 " Remember constants (!)
@@ -84,6 +83,8 @@ if executable('ag')
   nnoremap \ :Ag<SPACE>
 endif
 
+let g:rspec_command = "bin/spring rspec {spec}"
+
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'jquery,underscore,react,flux,d3'
 
@@ -91,15 +92,19 @@ let g:used_javascript_libs = 'jquery,underscore,react,flux,d3'
 let g:jsx_ext_required = 0
 
 " configure syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
+" configure fugitive
+" set statusline=%{fugitive#statusline()}
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P 
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
