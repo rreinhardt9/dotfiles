@@ -22,9 +22,6 @@
 [submodule ".vim/pack/plugins/start/vim-jsx"]
 	path = .vim/pack/plugins/start/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
-[submodule ".vim/pack/plugins/start/Syntastic"]
-	path = .vim/pack/plugins/start/Syntastic
-	url = git@github.com:vim-syntastic/syntastic.git
 [submodule ".vim/pack/plugins/start/ctrlp.vim"]
 	path = .vim/pack/plugins/start/ctrlp.vim
 	url = git@github.com:kien/ctrlp.vim.git
@@ -52,3 +49,9 @@
 [submodule ".vim/pack/plugins/start/vim-snippets"]
 	path = .vim/pack/plugins/start/vim-snippets
 	url = git@github.com:honza/vim-snippets.git
+[submodule ".vim/pack/plugins/start/Syntastic"]
+	path = .vim/pack/plugins/start/Syntastic
+	url = git@github.com:vim-syntastic/syntastic.git
+[submodule ".vim/pack/plugins/start/vim-prettier"]
+	path = .vim/pack/plugins/start/vim-prettier
+	url = git@github.com:prettier/vim-prettier.git
