@@ -11,6 +11,8 @@ noremap <Leader>s :call RunNearestSpec()<CR>
 noremap <Leader>l :call RunLastSpec()<CR>
 noremap <Leader>a :call RunAllSpecs()<CR>
 
+nmap ; :
+
 command! Wd w|bd " Command to save and close buffer
 
 set nocompatible              " be iMproved, required
@@ -31,6 +33,7 @@ set clipboard=unnamed
 set cursorline cursorcolumn
 set display=lastline " Show as much as possible if really long lines are cut off
 set expandtab
+" set foldmethod=syntax " Fold based on syntax rules
 set history=50 " keep 50 lines of command line history
 set hidden " When leaving a buffer with unsaved changes, keep it loaded but hidden
 set ignorecase
@@ -43,7 +46,7 @@ set sessionoptions-=options " Don't remember options when saving session
 set showcmd " display incomplete commands
 set sidescrolloff=5 " Keep 5 columns visible at edge for horizontal scroll
 set smartcase " case-smart searching
-" set switchbuf=newtab
+" set switchbuf=ewtab
 set tabstop=2 shiftwidth=2
 set wildmenu " show menu for autocompleting vim commands
 " Remember constants (!)
@@ -83,7 +86,7 @@ if executable('ag')
   nnoremap \ :Ag<SPACE>
 endif
 
-let g:rspec_command = "bin/spring rspec {spec}"
+let g:rspec_command = "!bin/spring rspec {spec}"
 
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'jquery,underscore,react,flux,d3'
@@ -101,10 +104,14 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_ruby_rubocop_exe='bundle exec rubocop'
+let g:syntastic_javascript_checkers=['eslint']
+" let g:syntastic_javascript_eslint_generic = 1
+let g:syntastic_javascript_eslint_exec='/Users/ross/dev/lesson.ly/eslint-wrapper'
 
 " configure fugitive
 " set statusline=%{fugitive#statusline()}
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P 
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P 
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -171,5 +178,6 @@ if !exists(":DiffOrig")
 endif
 
 let ruby_space_errors = 1
+
 
 
