@@ -22,12 +22,6 @@
 [submodule ".vim/pack/plugins/start/vim-jsx"]
 	path = .vim/pack/plugins/start/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
-[submodule ".vim/pack/plugins/start/ctrlp.vim"]
-	path = .vim/pack/plugins/start/ctrlp.vim
-	url = git@github.com:kien/ctrlp.vim.git
-[submodule ".vim/pack/plugins/start/rspec.vim"]
-	path = .vim/pack/plugins/start/rspec.vim
-	url = git@github.com:thoughtbot/vim-rspec.git
 [submodule ".vim/pack/plugins/start/tcomment_vim"]
 	path = .vim/pack/plugins/start/tcomment_vim
 	url = git@github.com:tomtom/tcomment_vim.git
@@ -37,9 +31,6 @@
 [submodule ".vim/pack/plugins/start/vim-addon-mw-utils"]
 	path = .vim/pack/plugins/start/vim-addon-mw-utils
 	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
-[submodule ".vim/pack/plugins/start/vim-fugitive"]
-	path = .vim/pack/plugins/start/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
 [submodule ".vim/pack/plugins/start/vim-rails"]
 	path = .vim/pack/plugins/start/vim-rails
 	url = git@github.com:tpope/vim-rails.git
@@ -55,3 +46,12 @@
 [submodule ".vim/pack/plugins/start/vim-prettier"]
 	path = .vim/pack/plugins/start/vim-prettier
 	url = git@github.com:prettier/vim-prettier.git
+[submodule ".vim/pack/plugins/start/ctrlp.vim"]
+	path = .vim/pack/plugins/start/ctrlp.vim
+	url = git@github.com:ctrlpvim/ctrlp.vim.git
+[submodule ".vim/pack/plugins/start/rspec.vim"]
+	path = .vim/pack/plugins/start/rspec.vim
+	url = git@github.com:thoughtbot/vim-rspec.git
+[submodule ".vim/pack/plugins/start/vim-fugitive"]
+	path = .vim/pack/plugins/start/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
