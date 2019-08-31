@@ -11,7 +11,11 @@ noremap <Leader>s :call RunNearestSpec()<CR>
 noremap <Leader>l :call RunLastSpec()<CR>
 noremap <Leader>a :call RunAllSpecs()<CR>
 
-nmap ; :
+" Make it easy to correct spelling
+nnoremap <leader>f 1z=
+
+" Normal mode dot command in visual mode
+vnoremap . :norm.<CR>
 
 command! Wd w|bd " Command to save and close buffer
 
