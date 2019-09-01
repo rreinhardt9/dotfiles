@@ -50,6 +50,7 @@ set sessionoptions-=options " Don't remember options when saving session
 set showcmd " display incomplete commands
 set sidescrolloff=5 " Keep 5 columns visible at edge for horizontal scroll
 set smartcase " case-smart searching
+set thesaurus+=/Users/ross/.vim/thesaurus/thesaurus.txt
 " set switchbuf=ewtab
 set tabstop=2 shiftwidth=2
 set wildmenu " show menu for autocompleting vim commands
