@@ -15,7 +15,7 @@ noremap <Leader>a :call RunAllSpecs()<CR>
 nnoremap <leader>f 1z=
 
 " Normal mode dot command in visual mode
-vnoremap . :norm.<CR>
+" vnoremap . :norm.<CR>
 
 command! Wd w|bd " Command to save and close buffer
 
