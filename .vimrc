@@ -17,6 +17,9 @@ nnoremap <leader>f 1z=
 " Normal mode dot command in visual mode
 " vnoremap . :norm.<CR>
 
+" Make the word just typed behind the cursor all caps using C-F in insert mode
+map! <C-F> <Esc>gUiw`]a
+
 command! Wd w|bd " Command to save and close buffer
 
 set nocompatible              " be iMproved, required
