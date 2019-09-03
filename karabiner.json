@@ -108,12 +108,12 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "tab"
+                                        "key_code": "left_control"
                                     }
                                 ],
-                                "to_if_held_down": [
+                                "to_if_alone": [
                                     {
-                                        "key_code": "left_ctrl"
+                                        "key_code": "tab"
                                     }
                                 ],
                                 "type": "basic"
