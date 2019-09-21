@@ -10,6 +10,10 @@ noremap <Leader>t :call RunCurrentSpecFile()<CR>
 noremap <Leader>s :call RunNearestSpec()<CR>
 noremap <Leader>l :call RunLastSpec()<CR>
 noremap <Leader>a :call RunAllSpecs()<CR>
+" Move between linting errors
+nnoremap ]r :ALENextWrap<CR>
+nnoremap [r :ALEPreviousWrap<CR>
+nmap <Leader>c <Plug>(ale_fix)
 
 " Make it easy to correct spelling
 nnoremap <leader>f 1z=
@@ -103,24 +107,19 @@ let g:used_javascript_libs = 'jquery,underscore,react,flux,d3'
 " vim-jsx
 let g:jsx_ext_required = 0
 
-" configure syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+let g:ale_ruby_rubocop_executable='bundle'
+let g:ale_fixers = {
+\   '*': ['trim_whitespace'],
+\   'ruby': ['rubocop'],
+\   'javascript': ['eslint', 'prettier'],
+\}
 
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_ruby_rubocop_exe='bundle exec rubocop'
-let g:syntastic_javascript_checkers=['eslint']
-" let g:syntastic_javascript_eslint_generic = 1
-let g:syntastic_javascript_eslint_exec='/Users/ross/dev/lesson.ly/eslint-wrapper'
+" Autocomplete load rails environment
+let g:rubycomplete_rails = 1
 
 " configure fugitive
 " set statusline=%{fugitive#statusline()}
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P 
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
