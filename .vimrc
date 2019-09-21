@@ -26,8 +26,8 @@ map! <C-F> <Esc>gUiw`]a
 
 command! Wd w|bd " Command to save and close buffer
 
-set nocompatible              " be iMproved, required
-filetype plugin indent on    " required
+set nocompatible              " be iMproved
+filetype plugin indent on
 
 packadd! matchit " Enable matchit package
 
@@ -57,6 +57,9 @@ set sessionoptions-=options " Don't remember options when saving session
 set showcmd " display incomplete commands
 set sidescrolloff=5 " Keep 5 columns visible at edge for horizontal scroll
 set smartcase " case-smart searching
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
 set thesaurus+=/Users/ross/.vim/thesaurus/thesaurus.txt
 " set switchbuf=ewtab
 set tabstop=2 shiftwidth=2
@@ -140,7 +143,7 @@ endif
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  set hlsearch
+  " set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
