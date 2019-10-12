@@ -38,6 +38,7 @@ set backspace=indent,eol,start
 syntax enable
 set background=dark
 colorscheme solarized
+let g:solarized_contrast="high"
 
 set autoread " Auto-reload changed files
 set clipboard=unnamed
