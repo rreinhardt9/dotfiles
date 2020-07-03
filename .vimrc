@@ -1,6 +1,9 @@
 " Leader
 let mapleader = " "
 
+" Source local vim settings if they exist, but fail quietly if not.
+silent! so .vimlocal
+
 " Strip trailing whitespace
 noremap <Leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 nnoremap <Leader>, :e $MYVIMRC<CR>
