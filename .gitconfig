@@ -4,6 +4,7 @@
 	name = Ross Reinhardt
 	email = rreinhardt9@gmail.com
 [alias]
+  yolo = push -f
 	co = checkout
 	br = branch
 	ci = commit
