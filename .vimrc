@@ -6,6 +6,7 @@ silent! so .vimlocal
 
 " Strip trailing whitespace
 noremap <Leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <Leader>w :w<CR>
 nnoremap <Leader>, :tabe $MYVIMRC<CR>
 nnoremap <Leader>m :Make<CR>
 
