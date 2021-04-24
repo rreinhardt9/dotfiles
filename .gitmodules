@@ -58,3 +58,6 @@
 [submodule ".vim/pack/plugins/start/vim-dispatch"]
 	path = .vim/pack/plugins/start/vim-dispatch
 	url = git@github.com:tpope/vim-dispatch.git
+[submodule ".vim/pack/plugins/start/vim-graphql"]
+	path = .vim/pack/plugins/start/vim-graphql
+	url = git@github.com:jparise/vim-graphql.git

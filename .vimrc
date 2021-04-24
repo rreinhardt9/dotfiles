@@ -6,6 +6,7 @@ silent! so .vimlocal
 
 " Strip trailing whitespace
 noremap <Leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <Leader>w :w<CR>
 nnoremap <Leader>, :tabe $MYVIMRC<CR>
 nnoremap <Leader>m :Make<CR>
 
@@ -114,6 +115,8 @@ let g:used_javascript_libs = 'jquery,underscore,react,flux,d3'
 " vim-jsx
 let g:jsx_ext_required = 0
 
+" Fix all errors in an 'unsafe' manner
+let g:ale_ruby_rubocop_auto_correct_all=1
 let g:ale_ruby_rubocop_executable='bundle'
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
