@@ -9,6 +9,10 @@ noremap <Leader>W :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Ba
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>, :tabe $MYVIMRC<CR>
 nnoremap <Leader>m :Make<CR>
+nnoremap <Leader>h :noh<CR>
+
+" Switch between the last two files
+nnoremap <Leader><Leader> <C-^>
 
 " RSpec.vim mappings
 noremap <Leader>t :call RunCurrentSpecFile()<CR>
@@ -72,6 +76,10 @@ set wildmenu " show menu for autocompleting vim commands
 " Remember constants (!)
 " Remember buffers that were open (used for restoring them if desired) (%)
 set viminfo^=!,%
+
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
 
 if !has('nvim') && &ttimeoutlen == -1
   set ttimeout
