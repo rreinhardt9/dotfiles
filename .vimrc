@@ -14,11 +14,13 @@ nnoremap <Leader>h :noh<CR>
 " Switch between the last two files
 nnoremap <Leader><Leader> <C-^>
 
-" RSpec.vim mappings
-noremap <Leader>t :call RunCurrentSpecFile()<CR>
-noremap <Leader>s :call RunNearestSpec()<CR>
-noremap <Leader>l :call RunLastSpec()<CR>
-noremap <Leader>a :call RunAllSpecs()<CR>
+" vim-test mappings
+nmap <silent> <Leader>tn :TestNearest<CR>
+nmap <silent> <Leader>tf :TestFile<CR>
+nmap <silent> <Leader>ts :TestSuite<CR>
+nmap <silent> <Leader>tl :TestLast<CR>
+nmap <silent> <Leader>tg :TestVisit<CR>
+
 " Move between linting errors
 nnoremap ]r :ALENextWrap<CR>
 nnoremap [r :ALEPreviousWrap<CR>
@@ -115,13 +117,14 @@ if executable('ag')
   nnoremap \ :Ag<SPACE>
 endif
 
-let g:rspec_command = "!bin/spring rspec {spec}"
-
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'jquery,underscore,react,flux,d3'
 
 " vim-jsx
 let g:jsx_ext_required = 0
+
+" vim-test running strategy
+let test#strategy = "dispatch"
 
 " Fix all errors in an 'unsafe' manner
 let g:ale_ruby_rubocop_auto_correct_all=1
