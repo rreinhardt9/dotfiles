@@ -133,6 +133,7 @@ let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
 \   'ruby': ['rubocop'],
 \   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['eslint'],
 \}
 
 " Autocomplete load rails environment
