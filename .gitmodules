@@ -61,3 +61,6 @@
 [submodule ".vim/pack/plugins/start/vim-test"]
 	path = .vim/pack/plugins/start/vim-test
 	url = https://github.com/vim-test/vim-test.git
+[submodule ".vim/pack/plugins/start/vim-projectionist"]
+	path = .vim/pack/plugins/start/vim-projectionist
+	url = git@github.com:tpope/vim-projectionist.git
