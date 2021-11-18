@@ -20,8 +20,13 @@
 	ignoreSubmodules = dirty
 [merge]
 	tool = meld
+	conflictstyle = diff3
 [core]
 	excludesfile = ~/.cvsignore
 	pager = diff-so-fancy | less --tabs=1,5 -R
 [fetch]
 	prune = true
+[commit]
+	template = /Users/ross/.gitmessage.txt
+[rebase]
+	autosquash = true
