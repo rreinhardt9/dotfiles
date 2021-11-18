@@ -25,6 +25,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 alias be='bundle exec'
+alias r='bin/rails'
 alias prettyjson="python -m json.tool"
 alias do-that-thang="git checkout master && git pull && bundle && be rake db:migrate"
 alias wttr="curl wttr.in"
