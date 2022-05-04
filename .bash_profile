@@ -27,9 +27,11 @@ fi
 alias be='bundle exec'
 alias r='bin/rails'
 alias prettyjson="python -m json.tool"
-alias do-that-thang="git checkout master && git pull && bundle && be rake db:migrate"
-alias cpdo-that-thang="git checkout voyager_develop && git pull --autostash --ff-only . origin/voyager_develop && bundle && be rake db:migrate"
+alias do-that-thang="git checkout main && git pull --autostash --ff-only && bundle && be rake db:migrate"
+alias start-driving="git fetch && git hard-reset"
+alias git-purge-merged='git branch -d $(git branch --merged=main | grep -v main)'
 alias wx="curl wttr.in"
+alias radar="open https://radar.weather.gov/?settings=v1_eyJhZ2VuZGEiOnsiaWQiOiJ3ZWF0aGVyIiwiY2VudGVyIjpbLTg2LjE1NSwzOS43NjZdLCJsb2NhdGlvbiI6Wy04Ni4xNSwzOS43NjddLCJ6b29tIjo3fSwiYW5pbWF0aW5nIjpmYWxzZSwiYmFzZSI6InN0YW5kYXJkIiwiYXJ0Y2MiOmZhbHNlLCJjb3VudHkiOmZhbHNlLCJjd2EiOmZhbHNlLCJyZmMiOmZhbHNlLCJzdGF0ZSI6ZmFsc2UsIm1lbnUiOnRydWUsInNob3J0RnVzZWRPbmx5IjpmYWxzZSwib3BhY2l0eSI6eyJhbGVydHMiOjAuOCwibG9jYWwiOjAuNiwibG9jYWxTdGF0aW9ucyI6MC44LCJuYXRpb25hbCI6MC42fX0%3D#/"
 
 # If you installed the SDK via Homebrew, otherwise ~/Library/Android/sdk
 export ANDROID_HOME=/usr/local/opt/android-sdk
