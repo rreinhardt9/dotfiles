@@ -3,10 +3,11 @@
 [user]
 	name = Ross Reinhardt
 	email = rreinhardt9@gmail.com
+	signingkey = 7BDF8728A996E4D6
 [alias]
   yeet = push --force-with-lease
   hard-reset = reset --hard @{u}
-  purge-merged-branches = git branch --merged='main' | egrep -v "master|dev|main|staging" | xargs git branch -d
+  purge-merged-branches = "!git fetch && git branch --merged=main | egrep -v 'master|dev|main|staging' | xargs git branch -d"
   co = checkout
   br = branch
   ci = commit
