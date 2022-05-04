@@ -5,12 +5,14 @@
 	email = rreinhardt9@gmail.com
 [alias]
   yeet = push --force-with-lease
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	unstage = reset HEAD --
-	last = log -1 HEAD
+  hard-reset = reset --hard @{u}
+  purge-merged-branches = git branch --merged='main' | egrep -v "master|dev|main|staging" | xargs git branch -d
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  unstage = reset HEAD --
+  last = log -1 HEAD
   dsf = "!git diff --color $@ | diff-so-fancy"
   glog = log --graph --decorate --oneline
 [push]
