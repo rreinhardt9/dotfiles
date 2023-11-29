@@ -7,4 +7,7 @@ tags
 .DS_Store
 
 # Vim
-.*.s??
+**.s??
+
+# Vendored Gems
+vendor/bundle
