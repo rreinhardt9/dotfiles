@@ -1,12 +1,13 @@
 --recurse=yes
 
 --exclude=.git
+--exclude=tmp/*
 --exclude=log/*
 --exclude=*.min.js
 --exclude=*node_modules/*
 --exclude=vendor/bundle
 --exclude=vendor/assets
---exclude=public/assets/bundles
+--exclude=public/assets/*
 
 --langdef=CoffeeScript
 --langmap=CoffeeScript:.coffee
