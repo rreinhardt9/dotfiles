@@ -1,12 +1,12 @@
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/pack/plugins/start/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = git@github.com:altercation/vim-colors-solarized.git
 [submodule ".vim/pack/plugins/start/vim-rhubarb"]
 	path = .vim/pack/plugins/start/vim-rhubarb
-	url = git://github.com/tpope/vim-rhubarb.git
+	url = git@github.com:tpope/vim-rhubarb.git
 [submodule ".vim/pack/plugins/start/vim-unimpaired"]
 	path = .vim/pack/plugins/start/vim-unimpaired
-	url = git://github.com/tpope/vim-unimpaired.git
+	url = git@github.com:tpope/vim-unimpaired.git
 [submodule ".vim/pack/plugins/start/vim-surround"]
 	path = .vim/pack/plugins/start/vim-surround
 	url = git@github.com:tpope/vim-surround.git
