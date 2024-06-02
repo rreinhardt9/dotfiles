@@ -133,7 +133,8 @@ let g:ale_ruby_rubocop_auto_correct_all=1
 let g:ale_ruby_rubocop_executable='bundle'
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
-\   'ruby': ['rubocop', 'trim_whitespace'],
+\   'ruby': ['rubocop'],
+\   'sql': ['pgformatter'],
 \   'javascript': ['eslint', 'prettier'],
 \   'typescript': ['eslint'],
 \}
