@@ -16,7 +16,9 @@ nnoremap <Leader><Leader> <C-^>
 
 " vim-test mappings
 nmap <silent> <Leader>tn :TestNearest<CR>
+nmap <silent> <Leader>tbn :TestNearest -strategy=basic<CR>
 nmap <silent> <Leader>tf :TestFile<CR>
+nmap <silent> <Leader>tbf :TestFile -strategy=basic<CR>
 nmap <silent> <Leader>ts :TestSuite<CR>
 nmap <silent> <Leader>tl :TestLast<CR>
 nmap <silent> <Leader>tg :TestVisit<CR>
