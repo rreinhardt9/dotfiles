@@ -24,10 +24,12 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
+. /usr/local/opt/asdf/libexec/asdf.sh
+
 alias be='bundle exec'
 alias r='bin/rails'
 alias prettyjson="python -m json.tool"
-alias do-that-thang="git checkout main && git pull --autostash --ff-only && bundle && be rake db:migrate"
+alias do-that-thang="git checkout main && git pull --autostash --ff-only && bundle && be rake db:migrate && r log:clear"
 alias start-driving="git fetch && git hard-reset"
 alias git-purge-merged='git branch -d $(git branch --merged=main | grep -v main)'
 alias wx="curl wttr.in"
